@@ -115,5 +115,54 @@ public static class Algorithms
         }
         return output;
     }
-    
+
+    public static void BaseBall()
+    {
+        List<string> data = new List<string>() { "5","2","C","D","+"};// { "5", "-2", "4", "C", "D", "9", "+", "+" }};
+        List<string> operationalKeys = new List<string> { "+", "D", "C" };
+        List<int> output =new();
+        int index = -1;
+        foreach (var item in data)
+        {
+            if (operationalKeys.Any(a=>a.ToLower() ==item.ToLower()))
+            {
+                var key = operationalKeys.FirstOrDefault(a => a == item);
+                if (key == "C")
+                {
+                    //get previous item and remove it
+                    if (output.Count > 0)
+                    {
+                        var selected = output[index];
+                        output.Remove(selected);
+                        index--;
+                    }
+                }
+                else if (key == "D")
+                {
+                    var previous = output[index-1];
+                    previous = previous * 2;
+                    output.Add(previous);
+                }
+                else if (key == "+")
+                {
+                    var first = output[index-1];
+                    var second = output[index-2];
+                    var previous = first + second;
+                    output.Add(previous);
+                }
+            }
+            else
+            {
+                var intput = int.Parse(item);
+                output.Add(intput);
+            }
+            index++;
+        }
+
+        foreach (var item in output)
+        {
+            Console.Write(item+",");
+        }
+        Console.WriteLine("\n"+ "total of : "+ output.Sum());
+    }
 }
