@@ -4,8 +4,8 @@ using AlgoList;
 
 Console.WriteLine("Hello, World!");
 
-// Algorithms.PascalTriangle(7);
+ Algorithms.PascalTriangle(7  );
 //  var numerals=Algorithms.RomanNumerals(9);
 //  Console.Write(numerals);
- var result=Algorithms.RomanNumerals(2022);
- Console.Write(result);
+// var result=Algorithms.RomanNumerals(2022);
+// Console.Write(result);
